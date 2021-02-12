@@ -25,7 +25,7 @@ namespace Commander.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<CommandReadDto>> GetAllCommands()
+        public ActionResult <IEnumerable<CommandReadDto>> GetAllCommands()
         {
             var commandItem = _repository.GetAllCommad();
             return Ok(commandItem);
@@ -33,7 +33,7 @@ namespace Commander.Controllers
 
         //Get api/command/{id}
         [HttpGet("{id}")]
-        public ActionResult <Command> GetCommandById(int id)
+        public ActionResult <CommandReadDto> GetCommandById(int id)
         {
             var commandItem = _repository.GetCommandById(id);
             if(commandItem != null)
