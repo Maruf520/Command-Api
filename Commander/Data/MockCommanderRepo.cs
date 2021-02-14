@@ -8,6 +8,11 @@ namespace Commander.Data
 {
     public class MockCommanderRepo : ICommanderRepo
     {
+        public void CreateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Command> GetAllCommad()
         {
             var commad = new List<Command>
@@ -30,6 +35,11 @@ namespace Commander.Data
                         return command;*/
 
            return  new Command { Id = 0, Line = "sdfs", HowTo = "sgsg", Platform = "dfgfdged" };
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }
