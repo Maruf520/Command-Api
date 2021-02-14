@@ -8,19 +8,34 @@ namespace Commander.Data
 {
     public class SqlCommanderRepo : ICommanderRepo
     {
-        private readonly CommanderContext _repository;
-        public SqlCommanderRepo(CommanderContext repository)
+        private readonly CommanderContext _context;
+        public SqlCommanderRepo(CommanderContext context)
         {
-            _repository = repository;
+            _context = context;
         }
+
+        public void CreateCommand(Command cmd)
+        {
+            if(cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _context.commands.Add(cmd);
+        }
+
         public IEnumerable<Command> GetAllCommad()
         {
-            return _repository.commands.ToList();
+            return _context.commands.ToList();
         }
 
         public Command GetCommandById(int id)
         {
-            return _repository.commands.FirstOrDefault(c => c.Id == id);
+            return _context.commands.FirstOrDefault(c => c.Id == id);
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >=0);
         }
     }
 }
