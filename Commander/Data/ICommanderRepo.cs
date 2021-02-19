@@ -12,6 +12,7 @@ namespace Commander.Data
         IEnumerable<Command> GetAllCommad();
         Command GetCommandById(int id);
         void CreateCommand(Command  cmd);
+        void UpdateCommand(Command cmd);
 
     }
 }
